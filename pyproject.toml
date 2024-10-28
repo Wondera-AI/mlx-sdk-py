@@ -1,0 +1,104 @@
+[project]
+name = "mlx-sdk"
+version = "0.1.0"
+description = "Default template for PDM package"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "alelat19", email = "alelat19@gmail.com" },
+]
+dependencies = [
+    "pydantic>=2.9.2",
+    "redis>=5.1.1",
+    "pytest>=8.3.3",
+    "pytest-asyncio>=0.24.0",
+    "boto3>=1.35.45",
+    "dotenv>=0.0.5",
+    "python-dotenv>=1.0.1",
+    "dill>=0.3.9",
+    "ray>=2.38.0",
+    "uuid>=1.30",
+]
+readme = "README.md"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.scripts]
+test = "cargo run --manifest-path testing/Cargo.toml"
+
+[tool.ruff]
+# Enable the pycodestyle (`E`) and Pyflakes (`F`) rules by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default.
+lint.select = [
+    # pyflakes
+    "F",
+    # pycodestyle
+    "E",
+    "W",
+    # flake8-2020
+    "YTT",
+    # flake8-bugbear
+    "B",
+    # flake8-commas
+    "COM",
+    # flake8-datetimez
+    "DTZ",
+    # flake8-debugger
+    "T10",
+    # flake8-gettext
+    "INT",
+    # flake8-quotes
+    "Q",
+    # pylint
+    "PL",
+    # misc lints
+    "PIE",
+    # flake8-pyi
+    "PYI",
+    # tidy imports
+    "TID",
+    # implicit string concatenation
+    "ISC",
+    # type-checking imports
+    "TCH",
+    # isort
+    # "I",
+    # comprehensions
+    "C4",
+    # pygrep-hooks
+    "PGH",
+    # Ruff-specific rules
+    "RUF",
+    # Upgrade syntax
+    "UP",
+    # one-blank-line-before-class
+    "D203",
+    # one-blank-line-after-class
+    "D204",
+    # "I001",
+    # "I002",
+    # "I003",
+    # "I004"
+]
+lint.ignore = [
+    "E402",
+    "B008",
+    "B006",
+    "E731",
+    # too many arguments to function call
+    "PLR0913",
+
+] #"E501"
+
+lint.fixable = ["ALL"]
+
+line-length = 88
+
+[tool.pdm]
+distribution = true
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"

@@ -1,0 +1,16 @@
+[package]
+name = "testing"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.90"
+futures-util = "0.3.31"
+pyo3 = { version = "0.22.5" } # features = ["extension-module"] }
+redis = { version = "0.27.5", features = ["aio", "tokio-comp"] }
+tokio = { version = "1.41.0", features = ["macros", "rt", "rt-multi-thread", "time"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+
+[package.metadata.pyo3]
+python-path = ".venv/bin/python3"
